@@ -1,3 +1,13 @@
+# ----------------------------
+# Added by me
+## Where i save the MRI scans
+assets/
+## Python cache
+__pycache__/
+## The neuroal network trained with his weights
+*.pth
+# ----------------------------
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
