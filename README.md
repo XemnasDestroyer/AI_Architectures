@@ -57,34 +57,28 @@ They help the model:
 ## 🧱 Architecture Diagram (Simplified)
 !["Simplifación de requisitos"](architecture_coña.jpg)
 
-# ⚙️ Installation
-## 1. Clone the repository
-git clone https://github.com/your_username/3D_Unet_from_scratch.git
-cd 3D_Unet_from_scratch
-
-
-## 2. (Optional) Create a virtual environment
-python3 -m venv venv
-source venv/bin/activate   # Linux/Mac
-venv\Scripts\activate      # Windows
-
-
-## 3. Install dependencies
-pip install -r requirements.txt
-
-
-If you don’t have a requirements.txt, I can generate one based on your code.
-
 # 🚀 Usage
-Train the model
-Run the main training script:
-python unet_3D_main.py
+This code use the library argparse to use arguments. You can execute the following command to see some of the arguments that uses:
+```
+python unet_3D_main.py --help
+```
 
+## Train
+Execute:
+```
+python unet_3D_main.py train -e [NUM_EPOCH]
+```
+where NUM_EPOCH is the number of iterations to train the model
+
+## Predict
+Execute
+```
+python unet_3D_main.py train
+```
+The route of the pth model is hardcoded. In a future you could write it as an argument
 
 Hyperparameters and dataset paths can be configured in:
 config.py
-
-
 
 # 📊 Training Results
 The file entrenamiento_stats.png contains training curves such as:
