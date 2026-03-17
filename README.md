@@ -55,7 +55,7 @@ They help the model:
 - Softmax for multi‑class segmentation
 
 ## 🧱 Architecture Diagram (Simplified)
-!["Simplifación de requisitos"]{architecture_coña.jpg}
+!["Simplifación de requisitos"](architecture_coña.jpg)
 
 # ⚙️ Installation
 ## 1. Clone the repository
