@@ -286,9 +286,12 @@ if __name__ == "__main__":
                         help="Número de épocas para el entrenamiento (por defecto: 100)")
 
     args = parser.parse_args()
-
+    from datetime import datetime
+    fecha = datetime.now().strftime("%d%m%Y")
+    model_path = f"./unet3d_brain_model_{fecha}.pth"
+    
     if args.mode == "predict":
-        predict(model_path="./unet3d_brain_model_16032026.pth", 
+        predict(model_path=model_path, 
                 image_path="./assets/data/3d/brain/00000057_brain_t1.nii",
                 mask_path="./assets/data/3d/brain/00000057_final_seg.nii")
     
