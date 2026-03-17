@@ -33,8 +33,8 @@ import nibabel as nib
 # Importamos el modelo UNet3D que definimos en unet.py. Este modelo es una
 # arquitectura de red neuronal convolucional diseñada 
 # para segmentación de imágenes 3D.
-from unet import UNet3D
-from unet3d import UNet3D as UNet3D_v2
+from unet2D_parts import UNet3D
+from unet3D_parts import UNet3D as UNet3D_v2
 
 # - El Dataset organiza los diccioarios en imágenes
 # - El DataLoader se encarga de crear los batches, mezclar los datos y 
@@ -129,7 +129,7 @@ def train(device, data_path, model_path, NUM_EPOCHS):
     # Scheduler: Reduce el LR cuando el loss se estanca
     scheduler = optim.lr_scheduler.ReduceLROnPlateau(optimizer, 'min', patience=30, factor=0.5, verbose=True)    
 
-    # 3. Cargar progreso si existe
+    # Cargar progreso si existe
     start_epoch = load_checkpoint(model, optimizer, scheduler, model_path)
     
     print(f"Iniciando entrenamiento en {device}...")
@@ -217,7 +217,7 @@ def predict(model_path, image_path, mask_path):
         ToTensord(keys=["image", "label"])
     ])
 
-    # 4. Preparar los datos
+    # Preparar los datos
     data = transforms({"image": image_path, "label": mask_path})
     
     # Preparamos el tensor para la red (añadimos dimensión de batch)
@@ -235,21 +235,21 @@ def predict(model_path, image_path, mask_path):
     # Sigmoid + Umbral de 0.5 para binarizar
     prediction_binaria = (torch.sigmoid(prediction) > 0.5).float()
 
-    # 1. Convertir el tensor de predicción a un array de numpy
+    # Convertir el tensor de predicción a un array de numpy
     # Quitamos las dimensiones extras de Batch y Canal para dejarlo en [D, H, W]
     pred_mask = prediction_binaria[0, 0].cpu().numpy() # [D, H, W]
 
-    # 2. Cargar la imagen original para copiar sus "metadatos"
+    # Cargar la imagen original para copiar sus "metadatos"
     # Esto es vital para que 3D Slicer sepa dónde colocar la máscara
     original_nifti = nib.load(image_path)
     header = original_nifti.header
     affine = original_nifti.affine
 
-    # 3. Crear el nuevo objeto NIfTI
+    # Crear el nuevo objeto NIfTI
     # Importante: Asegúrate de que el tipo de dato sea compatible (int16 o uint8 suele bastar)
     pred_nifti = nib.Nifti1Image(pred_mask.astype("uint8"), affine, header)
 
-    # 4. Guardar en el disco
+    # Guardar en el disco
     output_path = "./assets/data/3d/brain/prediccion_3d_final.nii"
     nib.save(pred_nifti, output_path)
 
