@@ -10,11 +10,9 @@ The project includes the full model architecture, training pipeline, configurati
 ```
 3D_Unet_from_scratch/
 │
-├── assets/                         # Images, plots, and visual resources
 ├── carvana_dataset.py              # Example dataset class (customizable)
 ├── config.py                       # Hyperparameter and path configuration
 ├── entrenamiento_stats.png         # Training curves (loss/metrics)
-├── model.pth                       # Example trained model
 ├── unet2D_parts.py                 # 2D U-Net components (if needed)
 ├── unet3D_parts.py                 # 3D U-Net building blocks
 ├── unet_3D_main.py                 # Main training script
