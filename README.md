@@ -16,7 +16,6 @@ The project includes the full model architecture, training pipeline, configurati
 ├── unet2D_parts.py                 # 2D U-Net components (if needed)
 ├── unet3D_parts.py                 # 3D U-Net building blocks
 ├── unet_3D_main.py                 # Main training script
-├── unet3d_brain_model.pth          # Pretrained 3D brain segmentation model
 └── README.md                       # This file
 ```
 
