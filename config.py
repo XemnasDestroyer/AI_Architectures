@@ -3,7 +3,9 @@ NUM_CLASSES = 1
 BACKGROUND_AS_CLASS = False
 
 TRAIN_CUDA = True
-BCE_WEIGHTS = [0.004, 0.996]
+# Peso de la clase minoritária/positva (tumor) en la función de pérdida BCE. 
+#   Se puede ajustar según el desequilibrio de clases.
+BCE_WEIGHT = 250 
 
 
 # Transformaciones para CARGAR ambos (imagen y máscara real).
