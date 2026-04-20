@@ -1,3 +1,16 @@
+# Prepare the environment using anaconda
+```
+conda create -n tfg python=3.10
+conda activate tfg
+conda install pytorch torchvision torchaudio cpuonly -c pytorch
+```
+
+Needed libraries:
+```
+pip install monai
+pip install matplotlib
+```
+
 # 3D_Unet_from_scratch
 3D U‑Net implementation in PyTorch from scratch using PyTorch to train a neural network for MRI images
 
