@@ -51,9 +51,6 @@ They help the model:
 - Sigmoid for binary segmentation
 - Softmax for multi‑class segmentation
 
-## 🧱 Architecture Diagram (Simplified)
-!["Simplifación de requisitos"](architecture_coña.jpg)
-
 # 🚀 Usage
 This code use the library argparse to use arguments. You can execute the following command to see some of the arguments that uses:
 ```
